@@ -1,30 +1,27 @@
-import React, { useEffect, useRef } from 'react';
-import { View, Text, Image, StyleSheet, Animated } from 'react-native';
+import React, { useEffect } from 'react';
+import { View, Text, StyleSheet, Image } from 'react-native';
+import Animated, { useSharedValue, withTiming } from 'react-native-reanimated';
+import { StackNavigationProp } from '@react-navigation/stack';
 import { useNavigation } from '@react-navigation/native';
-import type { StackNavigationProp } from '@react-navigation/stack';
 
-// Define the type for navigation
 type RootStackParamList = {
-    MainTabView: undefined;
+    LaunchScreen: undefined;
+    MainTabView: undefined;  // ✅ Add the correct type for navigation
 };
 
-const LaunchScreen: React.FC = () => {
-    const fadeAnim = useRef(new Animated.Value(1)).current; // Use useRef to persist animated value
-    const navigation = useNavigation<StackNavigationProp<RootStackParamList, 'MainTabView'>>();
+type NavigationProp = StackNavigationProp<RootStackParamList, 'LaunchScreen'>;
+
+const LaunchScreen = () => {
+    const fadeAnim = useSharedValue(0);
+    const navigation = useNavigation<NavigationProp>();  // ✅ Ensure correct typing
 
     useEffect(() => {
-        setTimeout(() => {
-            Animated.timing(fadeAnim, {
-                toValue: 0,
-                duration: 1000,
-                useNativeDriver: true,
-            }).start();
+        fadeAnim.value = withTiming(1, { duration: 1000 });
 
-            setTimeout(() => {
-                navigation.replace('MainTabView');
-            }, 1000);
+        setTimeout(() => {
+            navigation.navigate('MainTabView');  // ✅ Fixes the error
         }, 1500);
-    }, [fadeAnim, navigation]);
+    }, );
 
     return (
         <Animated.View style={[styles.container, { opacity: fadeAnim }]}>
