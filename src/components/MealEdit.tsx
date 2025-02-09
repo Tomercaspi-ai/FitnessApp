@@ -1,12 +1,13 @@
+// src/components/MealEdit.tsx
 import React from 'react';
 import { Modal, View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import { Meal } from '../types'; // ✅ Import the Meal type
+import { Meal } from '../types';
 
 interface MealEditProps {
     meal: Meal | null;
-    visible: boolean; // ✅ Explicitly define visibility
+    visible: boolean;
     onClose: () => void;
-    onSave?: (updatedMeal: Meal) => void; // ✅ Make onSave optional
+    onSave?: (updatedMeal: Meal) => void;
 }
 
 const MealEdit: React.FC<MealEditProps> = ({ meal, visible, onClose }) => {
@@ -29,7 +30,6 @@ const MealEdit: React.FC<MealEditProps> = ({ meal, visible, onClose }) => {
     );
 };
 
-// ✅ Define missing styles
 const styles = StyleSheet.create({
     overlay: {
         flex: 1,

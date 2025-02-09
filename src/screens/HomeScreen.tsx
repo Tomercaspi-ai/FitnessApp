@@ -1,14 +1,9 @@
+// src/screens/HomeScreen.tsx
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, FlatList, Modal } from 'react-native';
 import MealBubble from '../components/MealBubble';
 import MealDetail from '../components/MealDetail';
-
-interface Meal {
-    id: string;
-    name: string;
-    details: string;
-    calories: number;
-}
+import { Meal } from '../types';
 
 const HomeScreen: React.FC = () => {
     const [meals, setMeals] = useState<Meal[]>([
@@ -45,7 +40,12 @@ const HomeScreen: React.FC = () => {
                     <TouchableOpacity onPress={() => { setSelectedMeal(item); setModalVisible(true); }}>
                         <View style={styles.mealRow}>
                             <TouchableOpacity onPress={() => toggleMealEaten(item)} style={styles.checkmarkButton}>
-                                <Text style={[styles.checkmark, eatenMeals.has(item.id) ? styles.checked : styles.unchecked]}>
+                                <Text
+                                    style={[
+                                        styles.checkmark,
+                                        eatenMeals.has(item.id) ? styles.checked : styles.unchecked,
+                                    ]}
+                                >
                                     {eatenMeals.has(item.id) ? '✓' : '○'}
                                 </Text>
                             </TouchableOpacity>

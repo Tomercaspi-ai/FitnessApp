@@ -4,7 +4,9 @@ export interface Meal {
     name: string;
     details: string;
     calories: number;
-    carbs?: string; // ✅ Ensure all optional fields
-    protein?: string;
-    vegetables?: string;
 }
+// src/types.ts
+export type RootStackParamList = {
+    LaunchScreen: undefined;
+    MainTabView: undefined;
+};

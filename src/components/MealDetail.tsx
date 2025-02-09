@@ -1,19 +1,14 @@
+// src/components/MealDetail.tsx
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Modal } from 'react-native';
+import { Modal, View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { Meal } from '../types';
 
-interface Meal {
-  id: string;
-  name: string;
-  details: string;
-  calories: number;
-}
-
-interface Props {
+interface MealDetailProps {
   meal: Meal;
   onClose: () => void;
 }
 
-const MealDetail: React.FC<Props> = ({ meal, onClose }) => {
+const MealDetail: React.FC<MealDetailProps> = ({ meal, onClose }) => {
   return (
       <Modal transparent animationType="slide">
         <View style={styles.overlay}>
@@ -31,8 +26,19 @@ const MealDetail: React.FC<Props> = ({ meal, onClose }) => {
 };
 
 const styles = StyleSheet.create({
-  overlay: { flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'rgba(0, 0, 0, 0.5)' },
-  modal: { width: 300, padding: 20, backgroundColor: 'white', borderRadius: 10, alignItems: 'center' },
+  overlay: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)'
+  },
+  modal: {
+    width: 300,
+    padding: 20,
+    backgroundColor: 'white',
+    borderRadius: 10,
+    alignItems: 'center'
+  },
   title: { fontSize: 24, fontWeight: 'bold', marginBottom: 10 },
   details: { fontSize: 18, marginBottom: 10 },
   calories: { fontSize: 18, color: 'red', marginBottom: 20 },

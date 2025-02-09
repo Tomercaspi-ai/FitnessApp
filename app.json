@@ -1,4 +1,20 @@
 {
-  "name": "FitnessApp",
-  "displayName": "FitnessApp"
+  "expo": {
+    "name": "FitnessApp",
+    "slug": "fitnessapp",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      "expo-asset"
+    ]
+  }
 }

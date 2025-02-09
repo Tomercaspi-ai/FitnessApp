@@ -1,11 +1,7 @@
+// src/components/MealBubble.tsx
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-
-interface Meal {
-    id: string;
-    name: string;
-    details: string;
-}
+import { Meal } from '../types';
 
 const MealBubble: React.FC<{ meal: Meal }> = ({ meal }) => {
     return (

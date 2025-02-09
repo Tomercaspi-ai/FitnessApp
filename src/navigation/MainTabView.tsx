@@ -1,17 +1,18 @@
-import { createStackNavigator } from '@react-navigation/stack';
-import { NavigationContainer } from '@react-navigation/native';
-import LaunchScreen from '../screens/LaunchScreen';
-import MainTabView from '../navigation/MainTabView'; // ✅ FIXED PATH
+// src/navigation/MainTabView.tsx
+import React from 'react';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import HomeScreen from '../screens/HomeScreen';
+import MenuScreen from '../screens/MenuScreen';
 
-const Stack = createStackNavigator();
+const Tab = createBottomTabNavigator();
 
-const AppNavigator = () => (
-    <NavigationContainer>
-        <Stack.Navigator>
-            <Stack.Screen name="LaunchScreen" component={LaunchScreen} />
-            <Stack.Screen name="MainTabView" component={MainTabView} />
-        </Stack.Navigator>
-    </NavigationContainer>
-);
+const MainTabView = () => {
+    return (
+        <Tab.Navigator>
+            <Tab.Screen name="Home" component={HomeScreen} />
+            <Tab.Screen name="Menu" component={MenuScreen} />
+        </Tab.Navigator>
+    );
+};
 
-export default AppNavigator;
+export default MainTabView;

@@ -1,4 +1,14 @@
-import { registerRootComponent } from 'expo';
-import AppNavigator from './src/navigation/MainTabView'; // Adjust path if needed
+// App.tsx
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import AppNavigator from './src/navigation/AppNavigator';
 
-registerRootComponent(AppNavigator);
+const App = () => {
+    return (
+        <NavigationContainer>
+            <AppNavigator />
+        </NavigationContainer>
+    );
+};
+
+export default App;

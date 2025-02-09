@@ -1,17 +1,16 @@
+// src/screens/MenuScreen.tsx
 import React, { useState } from 'react';
 import { View, Text, FlatList, TouchableOpacity, StyleSheet } from 'react-native';
 import MealEdit from '../components/MealEdit';
-import { Meal } from '../types';  // ✅ Ensure you import `Meal` from the correct file
+import { Meal } from '../types';
 
 const MenuScreen: React.FC = () => {
-    // ✅ Define state with correct types
     const [meals, setMeals] = useState<Meal[]>([]);
     const [selectedMeal, setSelectedMeal] = useState<Meal | null>(null);
 
-    // ✅ Function to update meals correctly
     const updateMeal = (updatedMeal: Meal) => {
         setMeals(prevMeals =>
-            prevMeals.map(meal => meal.id === updatedMeal.id ? updatedMeal : meal)
+            prevMeals.map(meal => (meal.id === updatedMeal.id ? updatedMeal : meal))
         );
     };
 
@@ -32,12 +31,12 @@ const MenuScreen: React.FC = () => {
             {selectedMeal && (
                 <MealEdit
                     meal={selectedMeal}
-                    visible={!!selectedMeal} // ✅ Ensure `visible` is always a boolean
+                    visible={!!selectedMeal}
                     onClose={() => setSelectedMeal(null)}
                     onSave={updateMeal}
                 />
             )}
-            </View>
+        </View>
     );
 };
 
